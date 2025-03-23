@@ -31,6 +31,7 @@
 /* GUESS THE COUNTRY ITSELF MIDDLE COUNTRY */
 
 .main-gtc-itself-middle-country {
+    height: 200px;
     border: 0;
     line-height: 0;
     border-radius: 0.5rem;
@@ -45,6 +46,8 @@
 
 .main-gtc-itself-middle-country-image {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
     border-radius: 0.3rem;
     border: 1px solid rgba(255,255,255,0.4);
 }
