@@ -1,0 +1,85 @@
+/* GUESS THE COUNTRY ITSELF */
+
+.main-gtc-itself {
+    --width: 600px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+/* 
+
+    GUESS THE COUNTRY ITSELF MIDDLE
+
+*/
+
+.main-gtc-itself-middle {
+    width: var(--width);
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+/* GUESS THE COUNTRY ITSELF MIDDLE COUNTRIES */
+
+.main-gtc-itself-middle-countries {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+/* GUESS THE COUNTRY ITSELF MIDDLE COUNTRY */
+
+.main-gtc-itself-middle-country {
+    border: 0;
+    line-height: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    padding: 5px;
+    background-color: #B87333;
+    box-shadow: 0 4px 0 #905925;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    outline: none;
+}
+
+.main-gtc-itself-middle-country-image {
+    width: 100%;
+    border-radius: 0.3rem;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+.main-gtc-itself-middle-country:hover {
+    background-color: #de8d42;
+}
+
+.main-gtc-itself-middle-country:active {
+    background-color: #d4873f;
+    box-shadow: 0 0 0 #905925;
+    transform: translateY(4px);
+}
+
+/* GUESS THE COUNTRY ITSELF MIDDLE HINT */
+
+.main-gtc-itself-middle-hint {
+    padding: 5px;
+    background-color: #FFB300;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 0 #9d6e00;
+}
+
+.main-gtc-itself-middle-hint-text {
+    color: rgb(188, 188, 188);
+    font-weight: 200;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: #432f00;
+    border-radius: 0.2rem;
+    padding-block: 5px;
+}
+
+.main-gtc-itself-middle-hint-text span {
+    font-weight: 500;
+    color: white;
+}
