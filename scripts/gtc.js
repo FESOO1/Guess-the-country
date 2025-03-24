@@ -6,12 +6,19 @@ const countryButtonImages = document.querySelectorAll('.main-gtc-itself-middle-c
 // COUNTRY HINT TEXT
 const countryHintText = document.querySelector('.main-gtc-itself-middle-hint-text');
 
+// SCORE
+const scoreText = document.querySelector('#scoreText');
+
 // GUESS THE COUNTRY
 const gtc = {
-    pickedCountry: '',
+    pickedCountry: {
+        pickedCountryGuess: '',
+        pickedCountryGuessReward: 0,
+    },
     guessBy: {
         guessBy: 'name',
-    }
+    },
+    score: 0,
 };
 
 // START THE GAME
@@ -59,7 +66,8 @@ function displayingFourCountries(countriesData) {
         countryButtons[i].setAttribute(`data-country-${gtc.guessBy.guessBy}`, randomCountryIndex[gtc.guessBy.guessBy]);
 
         if (i === pickedCountry) {
-            gtc.pickedCountry = randomCountryIndex[gtc.guessBy.guessBy];
+            gtc.pickedCountry.pickedCountryGuess = randomCountryIndex[gtc.guessBy.guessBy];
+            gtc.pickedCountry.pickedCountryGuessReward = randomCountryIndex.points;
             countryHintText.innerHTML = `Country ${gtc.guessBy.guessBy}: <span>${randomCountryIndex[gtc.guessBy.guessBy]}</span>`;
         };
     };
@@ -71,17 +79,24 @@ for (let i = 0; i < countryButtons.length; i++) {
     countryButtons[i].addEventListener('click', () => {
         const countryGuessData = countryButtons[i].getAttribute(`data-country-${gtc.guessBy.guessBy}`);
 
-        // 
-        if (gtc.pickedCountry === countryGuessData) {
+        // CHECKING IF THE GUESS WAS CORRECT
+        if (gtc.pickedCountry.pickedCountryGuess === countryGuessData) {
+            // IF CORRECT:
+            gtc.score += gtc.pickedCountry.pickedCountryGuessReward;
+            scoreText.textContent = gtc.score;
             countryButtons[i].classList.add('main-gtc-itself-middle-country-correct');
+
+            // SAVING THE SCORE IN LOCAL STORAGE
+            localStorage.setItem('scoreLS', gtc.score);
         } else {
+            // IF NOT:
             countryButtons[i].classList.add('main-gtc-itself-middle-country-incorrect');
 
             // SHOWING THE CORRECT ANSWER
             for (const countryButton of countryButtons) {
                 const countryButtonAttribute = countryButton.getAttribute(`data-country-${gtc.guessBy.guessBy}`);
 
-                if (countryButtonAttribute === gtc.pickedCountry) {
+                if (countryButtonAttribute === gtc.pickedCountry.pickedCountryGuess) {
                     countryButton.classList.add('main-gtc-itself-middle-country-correct');
                     break;
                 };
@@ -93,7 +108,7 @@ for (let i = 0; i < countryButtons.length; i++) {
 
         setTimeout(() => {
             enablingAndResettingTheCountryButtons();
-            gtc.pickedCountry = '';
+            gtc.pickedCountry.pickedCountryGuess = '';
             retrievingTheCountriesData();
         }, 2000);
     });
@@ -116,3 +131,16 @@ function enablingAndResettingTheCountryButtons() {
         countryButton.classList.remove('main-gtc-itself-middle-country-incorrect');
     };
 };
+
+// UPDATING THE SCORE
+
+function updatingTheScore() {
+    const scoreLS = localStorage.getItem('scoreLS');
+    
+    if (scoreLS) {
+        gtc.score = Number(scoreLS);
+        scoreText.textContent = gtc.score;
+    };
+};
+
+updatingTheScore();
