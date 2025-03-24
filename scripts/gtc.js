@@ -1,4 +1,9 @@
+// MENU
+const gtcMenu = document.querySelector('.main-gtc-menu');
+const startButton = document.querySelector('#startButton');
+
 // COUNTRIES CONTAINER
+const gtcItself = document.querySelector('.main-gtc-itself');
 const countriesContainer = document.querySelector('.main-gtc-itself-middle-countries');
 const countryButtons = document.querySelectorAll('.main-gtc-itself-middle-country');
 const countryButtonImages = document.querySelectorAll('.main-gtc-itself-middle-country-image');
@@ -11,6 +16,7 @@ const scoreText = document.querySelector('#scoreText');
 
 // GUESS THE COUNTRY
 const gtc = {
+    isGameStarted: false,
     pickedCountry: {
         pickedCountryGuess: '',
         pickedCountryGuessReward: 0,
@@ -24,11 +30,23 @@ const gtc = {
 // START THE GAME
 
 function startTheGame() {
+    gtc.isGameStarted = true;
+    checkingIfTheGameStarted();
     retrievingTheCountriesData();
     enablingAndResettingTheCountryButtons();
 };
 
-startTheGame();
+// CHECKING IF THE GAME STARTED
+
+function checkingIfTheGameStarted() {
+    if (gtc.isGameStarted === true) {
+        gtcItself.classList.add('main-gtc-itself-active');
+        gtcMenu.classList.add('main-gtc-menu-hidden');
+    } else {
+        gtcItself.classList.remove('main-gtc-itself-active');
+        gtcMenu.classList.remove('main-gtc-menu-hidden');
+    };
+};
 
 // RETRIEVING THE COUNTRIES DATA
 
@@ -88,6 +106,11 @@ for (let i = 0; i < countryButtons.length; i++) {
 
             // SAVING THE SCORE IN LOCAL STORAGE
             localStorage.setItem('scoreLS', gtc.score);
+
+            // HANDLING THE SOUND EFFECT
+            const soundEffect = document.createElement('audio');
+            soundEffect.src = '../assets/sounds/correct.wav';
+            soundEffect.play();
         } else {
             // IF NOT:
             countryButtons[i].classList.add('main-gtc-itself-middle-country-incorrect');
@@ -101,6 +124,11 @@ for (let i = 0; i < countryButtons.length; i++) {
                     break;
                 };
             };
+
+            // HANDLING THE SOUND EFFECT
+            const soundEffect = document.createElement('audio');
+            soundEffect.src = '../assets/sounds/incorrect.wav';
+            soundEffect.play();
         };
 
         // DISABLING THE COUNTRY BUTTONS
@@ -144,3 +172,6 @@ function updatingTheScore() {
 };
 
 updatingTheScore();
+
+// INITIALIZE BUTTONS
+startButton.addEventListener('click', startTheGame);

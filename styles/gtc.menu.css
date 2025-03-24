@@ -10,6 +10,13 @@
     align-items: center;
     justify-content: center;
     background-color: rgba(0,0,0,0.2);
+    transition: scale 300ms, opacity 300ms;
+}
+
+.main-gtc-menu-hidden {
+    scale: 1.5;
+    opacity: 0;
+    pointer-events: 0;
 }
 
 /* GUESS THE COUNTRY MENU BUTTONS */
