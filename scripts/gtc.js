@@ -14,6 +14,15 @@ const gtc = {
     }
 };
 
+// START THE GAME
+
+function startTheGame() {
+    retrievingTheCountriesData();
+    enablingAndResettingTheCountryButtons();
+};
+
+startTheGame();
+
 // RETRIEVING THE COUNTRIES DATA
 
 async function retrievingTheCountriesData() {
@@ -33,8 +42,6 @@ async function retrievingTheCountriesData() {
         console.log(error)
     };
 };
-
-retrievingTheCountriesData();
 
 // DISPLAYING FOUR COUNTRIES
 
