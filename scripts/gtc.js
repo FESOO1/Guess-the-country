@@ -119,10 +119,11 @@ for (let i = 0; i < countryButtons.length; i++) {
 
             // SHOWING THE CORRECT ANSWER
             for (const countryButton of countryButtons) {
-                const countryButtonAttribute = countryButton.getAttribute(`data-country-${gtc.guessBy.guessBy}`);
+                const countryGuessData = gtc.guessBy.guessBy === 'population' ? Number(countryButton.getAttribute(`data-country-${gtc.guessBy.guessBy}`)) : countryButton.getAttribute(`data-country-${gtc.guessBy.guessBy}`);
 
-                if (countryButtonAttribute === gtc.pickedCountry.pickedCountryGuess) {
+                if (countryGuessData === pickedCountryGuess) {
                     countryButton.classList.add('main-gtc-itself-middle-country-correct');
+                    console.log(true);
                 };
             };
 
