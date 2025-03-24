@@ -78,11 +78,13 @@
     border-radius: 0.2rem;
 }
 
-.main-gtc-menu-button-content-button-guess-by-active {
+.main-gtc-menu-button-content-button-guess-by-active,
+.main-gtc-menu-button-content-button-settings-active {
     background-color: rgba(255, 255, 255, 0.12);
 }
 
-.main-gtc-menu-button-content-button-guess-by-active::before {
+.main-gtc-menu-button-content-button-guess-by-active::before,
+.main-gtc-menu-button-content-button-settings-active::before {
     content: '';
     position: absolute;
     top: 50%;

@@ -25,6 +25,8 @@ const gtc = {
         guessBy: 'name',
     },
     score: 0,
+    isMusicOn: false,
+    isSoundOn: true,
 };
 
 // START THE GAME
@@ -110,9 +112,11 @@ for (let i = 0; i < countryButtons.length; i++) {
             localStorage.setItem('scoreLS', gtc.score);
 
             // HANDLING THE SOUND EFFECT
-            const soundEffect = document.createElement('audio');
-            soundEffect.src = '../assets/sounds/correct.wav';
-            soundEffect.play();
+            if (gtc.isSoundOn === true) {
+                const soundEffect = document.createElement('audio');
+                soundEffect.src = '../assets/sounds/correct.wav';
+                soundEffect.play();
+            };
         } else {
             // IF NOT:
             countryButtons[i].classList.add('main-gtc-itself-middle-country-incorrect');
@@ -128,9 +132,11 @@ for (let i = 0; i < countryButtons.length; i++) {
             };
 
             // HANDLING THE SOUND EFFECT
-            const soundEffect = document.createElement('audio');
-            soundEffect.src = '../assets/sounds/incorrect.wav';
-            soundEffect.play();
+            if (gtc.isSoundOn === true) {
+                const soundEffect = document.createElement('audio');
+                soundEffect.src = '../assets/sounds/incorrect.wav';
+                soundEffect.play();
+            };
         };
 
         // DISABLING THE COUNTRY BUTTONS
