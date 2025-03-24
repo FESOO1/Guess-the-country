@@ -123,7 +123,6 @@ for (let i = 0; i < countryButtons.length; i++) {
 
                 if (countryButtonAttribute === gtc.pickedCountry.pickedCountryGuess) {
                     countryButton.classList.add('main-gtc-itself-middle-country-correct');
-                    /* break; */
                 };
             };
 
