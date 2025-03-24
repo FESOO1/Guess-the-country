@@ -9,6 +9,9 @@ const countryHintText = document.querySelector('.main-gtc-itself-middle-hint-tex
 // GUESS THE COUNTRY
 const gtc = {
     pickedCountry: '',
+    guessBy: {
+        guessBy: 'name',
+    }
 };
 
 // RETRIEVING THE COUNTRIES DATA
@@ -42,14 +45,14 @@ function displayingFourCountries(countriesData) {
 
         // COUNTRY IMAGE AND ALT
         countryButtonImages[i].src = randomCountryIndex.flags.svg;
-        countryButtonImages[i].alt = `${randomCountryIndex.name}'s flag`;
+        countryButtonImages[i].alt = `${randomCountryIndex[gtc.guessBy.guessBy]}'s flag`;
 
         // COUNTRY BUTTON
-        countryButtons[i].setAttribute('data-country-name', randomCountryIndex.name);
+        countryButtons[i].setAttribute(`data-country-${gtc.guessBy.guessBy}`, randomCountryIndex[gtc.guessBy.guessBy]);
 
         if (i === pickedCountry) {
-            gtc.pickedCountry = randomCountryIndex.name;
-            countryHintText.innerHTML = `Country name: <span>${randomCountryIndex.name}</span>`;
+            gtc.pickedCountry = randomCountryIndex[gtc.guessBy.guessBy];
+            countryHintText.innerHTML = `Country ${gtc.guessBy.guessBy}: <span>${randomCountryIndex[gtc.guessBy.guessBy]}</span>`;
         };
     };
 };
@@ -58,17 +61,50 @@ function displayingFourCountries(countriesData) {
 
 for (let i = 0; i < countryButtons.length; i++) {
     countryButtons[i].addEventListener('click', () => {
-        const countryName = countryButtons[i].getAttribute('data-country-name');
+        const countryGuessData = countryButtons[i].getAttribute(`data-country-${gtc.guessBy.guessBy}`);
 
-        if (gtc.pickedCountry === countryName) {
-            console.log('Correct');
+        // 
+        if (gtc.pickedCountry === countryGuessData) {
+            countryButtons[i].classList.add('main-gtc-itself-middle-country-correct');
         } else {
-            console.log('Incorrect');
+            countryButtons[i].classList.add('main-gtc-itself-middle-country-incorrect');
+
+            // SHOWING THE CORRECT ANSWER
+            for (const countryButton of countryButtons) {
+                const countryButtonAttribute = countryButton.getAttribute(`data-country-${gtc.guessBy.guessBy}`);
+
+                if (countryButtonAttribute === gtc.pickedCountry) {
+                    countryButton.classList.add('main-gtc-itself-middle-country-correct');
+                    break;
+                };
+            };
         };
 
+        // DISABLING THE COUNTRY BUTTONS
+        disablingTheCountryButtons();
+
         setTimeout(() => {
+            enablingAndResettingTheCountryButtons();
             gtc.pickedCountry = '';
             retrievingTheCountriesData();
         }, 2000);
     });
+};
+
+// DISABLING THE COUNTRY BUTTONS
+
+function disablingTheCountryButtons() {
+    for (const countryButton of countryButtons) {
+        countryButton.disabled = true;
+    };
+};
+
+// ENABLING AND RESETTING THE COUNTRY BUTTONS
+
+function enablingAndResettingTheCountryButtons() {
+    for (const countryButton of countryButtons) {
+        countryButton.disabled = false;
+        countryButton.classList.remove('main-gtc-itself-middle-country-correct');
+        countryButton.classList.remove('main-gtc-itself-middle-country-incorrect');
+    };
 };

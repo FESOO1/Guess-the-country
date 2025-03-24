@@ -62,6 +62,30 @@
     transform: translateY(4px);
 }
 
+/* CORRECT - INCORRECT - DISABLED */
+
+.main-gtc-itself-middle-country:disabled {
+    pointer-events: none;
+}
+
+.main-gtc-itself-middle-country-correct {
+    background-color: rgb(92, 252, 0);
+    box-shadow: 0 4px 0 rgb(52, 143, 0);
+}
+
+.main-gtc-itself-middle-country-correct .main-gtc-itself-middle-country-image {
+    border: 1px solid rgba(47, 255, 0, 0.6);
+}
+
+.main-gtc-itself-middle-country-incorrect {
+    background-color: rgb(252, 63, 0);
+    box-shadow: 0 4px 0 rgb(160, 40, 0);
+}
+
+.main-gtc-itself-middle-country-incorrect .main-gtc-itself-middle-country-image {
+    border: 1px solid rgb(252, 63, 0);
+}
+
 /* GUESS THE COUNTRY ITSELF MIDDLE HINT */
 
 .main-gtc-itself-middle-hint {
