@@ -45,6 +45,31 @@
     font-size: 1.2rem;
 }
 
+.main-gtc-itself-top-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 0.2rem;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.main-gtc-itself-top-button-svg {
+    width: 20px;
+    height: 20px;
+}
+
+.main-gtc-itself-top-button:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.main-gtc-itself-top-button:active {
+    background-color: rgba(255,255,255,0.08);
+}
+
 /* 
 
     GUESS THE COUNTRY ITSELF MIDDLE
@@ -147,4 +172,27 @@
 .main-gtc-itself-middle-hint-text span {
     font-weight: 500;
     color: white;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 700px) {
+    .main-gtc-itself {
+        --width: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 600px) {
+    .main-gtc-itself-middle-country {
+        height: 150px;
+    }
+    .main-gtc-itself-middle-hint-text {
+        padding-inline: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    .main-gtc-itself-middle-country {
+        height: 120px;
+    }
 }

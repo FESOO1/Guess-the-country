@@ -14,6 +14,9 @@ const countryHintText = document.querySelector('.main-gtc-itself-middle-hint-tex
 // SCORE
 const scoreText = document.querySelector('#scoreText');
 
+// GO BACK TO MENU
+const goBackToMenuButton = document.querySelector('#goBackToMenuButton');
+
 // GUESS THE COUNTRY
 const gtc = {
     isGameStarted: false,
@@ -181,5 +184,15 @@ function updatingTheScore() {
 
 updatingTheScore();
 
+// GO BACK TO MENU
+
+function goBackToMenu() {
+    disablingTheCountryButtons();
+    gtc.pickedCountry.pickedCountryGuess = '';
+    gtc.isGameStarted = false;
+    checkingIfTheGameStarted();
+};
+
 // INITIALIZE BUTTONS
 startButton.addEventListener('click', startTheGame);
+goBackToMenuButton.addEventListener('click', goBackToMenu);
