@@ -95,10 +95,12 @@ function displayingFourCountries(countriesData) {
 
 for (let i = 0; i < countryButtons.length; i++) {
     countryButtons[i].addEventListener('click', () => {
-        const countryGuessData = countryButtons[i].getAttribute(`data-country-${gtc.guessBy.guessBy}`);
+        const countryGuessData = gtc.guessBy.guessBy === 'population' ? Number(countryButtons[i].getAttribute(`data-country-${gtc.guessBy.guessBy}`)) : countryButtons[i].getAttribute(`data-country-${gtc.guessBy.guessBy}`);
+
+        const pickedCountryGuess = gtc.guessBy.guessBy === 'population' ? Number(gtc.pickedCountry.pickedCountryGuess) : gtc.pickedCountry.pickedCountryGuess;
 
         // CHECKING IF THE GUESS WAS CORRECT
-        if (gtc.pickedCountry.pickedCountryGuess === countryGuessData) {
+        if (pickedCountryGuess === countryGuessData) {
             // IF CORRECT:
             gtc.score += gtc.pickedCountry.pickedCountryGuessReward;
             scoreText.textContent = gtc.score;

@@ -16,10 +16,16 @@
             <div class="main-gtc-menu-buttons">
                 <button class="main-gtc-menu-button" type="button" id="startButton">START</button>
                 <button class="main-gtc-menu-button" type="button">SETTINGS</button>
-                <!-- <button class="main-gtc-menu-button" type="button">GUESS BY: NAME</button>
-                <button class="main-gtc-menu-button" type="button">DIFFICULTY: MIXED</button> -->
+                <button class="main-gtc-menu-button main-gtc-menu-button-container" type="button">
+                    <div class="main-gtc-menu-button-inner" id="guessByText">GUESS BY: NAME</div>
+                    <div class="main-gtc-menu-button-content">
+                        <div class="main-gtc-menu-button-content-button main-gtc-menu-button-content-button-guess-by main-gtc-menu-button-content-button-guess-by-active" data-guess-by-value="name">NAME</div>
+                        <div class="main-gtc-menu-button-content-button main-gtc-menu-button-content-button-guess-by" data-guess-by-value="population">POPULATION</div>
+                        <div class="main-gtc-menu-button-content-button main-gtc-menu-button-content-button-guess-by" data-guess-by-value="region">REGION</div>
+                    </div>
+                </button>
+                <button class="main-gtc-menu-button" type="button">DIFFICULTY: MIXED</button>
             </div>
-            <div class="main-gtc-menu-settings"></div>
         </div>
 
         <!-- GUESS THE COUNTRY ITSELF -->
@@ -56,5 +62,6 @@
     </main>
     
     <script src="./scripts/gtc.js"></script>
+    <script src="./scripts/menu.js"></script>
 </body>
 </html>
